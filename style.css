@@ -36,6 +36,9 @@ a{
 p{
     color: #555;
 }
+.msg{
+    background-color: red;
+}
 .container{
     max-width: 1300px;
     margin: auto;
@@ -144,6 +147,8 @@ h4{
     margin-left: 20px;
     display:none;
 }
+
+
 /*-------------- media query for menu ---------------*/
 @media only screen and (maw-width: 800px){
     nav ul{

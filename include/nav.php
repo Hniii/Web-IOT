@@ -17,8 +17,12 @@
                         if($connecte){
                             ?>
                             
+                            <li><a href="categories.php" >Liste  des categories</a></li>
+                            <li><a href="composants.php" >Liste  des composants</a></li>
                             <li><a href="ajouter_categorie.php">Ajouter categorie</a></li>                        
                             <li><a href="ajouter_composant.php">Ajouter composant</a></li>
+                            <li><a href="deconnexion.php">Déconnexion</a></li>
+                            
                             <?php 
                         }else{
                             ?>

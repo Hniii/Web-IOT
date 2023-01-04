@@ -36,9 +36,7 @@ a{
 p{
     color: #555;
 }
-.msg{
-    background-color: red;
-}
+
 .container{
     max-width: 1300px;
     margin: auto;
@@ -74,9 +72,19 @@ p{
     border-radius: 30px;
     transition: background 0.5s;
 }
+
+
 .btn:hover{
     background: #353455;
 }
+.button {
+    transition-duration: 0.4s;
+  }
+  
+  .button:hover {
+    background-color: #df8116; /* Green */
+    color: white;
+  }
 .header{
     background: rgba(254, 255, 255, 0.897);
     
@@ -147,6 +155,23 @@ h4{
     margin-left: 20px;
     display:none;
 }
+.table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #6495b6;
+    color: white;
+  }
+.table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+.table tr:hover {background-color: #ddd;}
+
 
 
 /*-------------- media query for menu ---------------*/

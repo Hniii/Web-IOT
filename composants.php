@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="include/css/jquery-ui.css">
     <script type="text/javascript" src="include/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="include/js/jquery-ui.js"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
    <!-- jQuery library -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- PHPExcel library -->
-<script src="PHPExcel/PHPExcel.php"></script>
     <title>Liste des composants</title>
-
+    </head>
     <style>
 .dropbtn {
   background-color:#6495b6;
@@ -58,18 +58,17 @@
 .dropdown:hover .dropbtn {
   background-color: #4CAF50;
 }
+
 </style>
-</head>
+
 <body>
     <?php include "include/nav.php";
      require_once 'include/database.php';?>
     <div class="container">
-        <div> <h3 style="text-align: center; font-weight: blod;">COMPOSANTS</h3></div>
+        <div> <h3 class="title">COMPOSANTS</h3></div>
         <div class="row">
             <div class="col">
-                <div>&nbsp;</div>
                 <a class="btn" href="ajouter_composant.php">Ajouter composant</a>
-                <div>&nbsp;</div>
             </div><!--col-->
         </div><!--row-->
         <div class="row">
@@ -95,29 +94,24 @@
                 <div>&nbsp;</div>
             </div><!--col-->
             <div class="col">
-                <div>
+                <div> <i class="fa fa-search"></i>
                     <input type="text" name="search" id="search" placeholder="Search..." onkeyup="
                     search_data()">
                 </div>
                 <div>&nbsp;</div>
             </div><!--col-->
             <div class="col">
-               
-                
-<div class="dropdown">
-  <button class="dropbtn">Actions</button>
-  <div class="dropdown-content " id="export-menu">
-  <a id="export-to-excel" href="#">Exporter Excel (.xlsx)</a>
- 
-  <a href="#">Génération d'une décharge (.docx)</a>
-  </div>
- <form action="generate_excel.php" method="post" id="export-form">
-    <input type="hidden" value='' id="hidden-type" name="ExportType"/>
-  </form>
-
-</div>
-                    <span></span>
-                </button>
+                            
+                <div class="dropdown">
+                    <button class="dropbtn">Actions</button>
+                    <div class="dropdown-content " id="export-menu">
+                    <a id="export-to-excel" href="#"> Génération d'un Excel  (.xls)</a>
+                    <a id="export-to-word" href="#">Génération d'une décharge (.docx)</a>
+                </div>       
+                <form action="generate_file.php" method="post" id="export-form">
+                    <input type="hidden" value='' id="hidden-type" name="ExportType"/>
+                </form>
+            </div><!--col-->
             <div>&nbsp;</div>   
             </div><!--col-->
          </div><!--row-->
@@ -155,8 +149,16 @@
                     <td><?= $composant->categorie_libelle?></td>
                     <td><img class="imgstyle responsive" src="images/<?= $composant->img?>"></td>
                     <td>
-                        <a href="modifier_composant.php?id=<?php echo $composant->id ?>">Modifier</a>
-                        <a href="supprimer_composant.php?id=<?php echo $composant->id ?>">Supprimer</a>
+                        <a href="modifier_composant.php?id=<?php echo $composant->id ?>"
+                         style="display:inline-block; color: #01c097; font-size:30px; padding:5px;margin-left:5px; margin-top:5px;">
+                         <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="supprimer_composant.php?id=<?php echo $composant->id ?>"
+                           onclick="return confirm('Voulez vous vraiment supprimer le composant
+                           <?php echo $composant->nom ?>');"
+                            style="display:inline-block; color:#f18181; font-size:30px;padding:5px;">
+                           <i class="fa fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
             <?php
@@ -190,7 +192,6 @@ function search_data(){
             }
         });
     }
-    
 }
 
 function fetch_etat(){
@@ -205,8 +206,8 @@ function fetch_etat(){
             }
         });
     }
-
 }
+
 function fetch_date(){
     var search=jQuery('#fetch_date').val();
     if(search != ''){
@@ -222,23 +223,36 @@ function fetch_date(){
 
 }
 
+$(document).ready(function(){
+
+jQuery("#export-to-word").bind("click",function(){
+     var  target = $(this).attr('id');
+     switch(target){
+         case 'export-to-word':
+             $('#hidden-type').val(target);
+             $('#export-form').submit();
+             $('#hidden-type').val('');
+             break;
+        
+     }
+
+ });
+
+});
 
 $(document).ready(function(){
 
-   jQuery("#export-to-excel").bind("click",function(){
-        var  target = $(this).attr('id');
-        switch(target){
-            case 'export-to-excel':
-                $('#hidden-type').val(target);
-                $('#export-form').submit();
-                $('#hidden-type').val('');
-                break
-        }
-
-    });
-   
+jQuery("#export-to-excel").bind("click",function(){
+     var  target = $(this).attr('id');
+     switch(target){
+         case 'export-to-excel':
+             $('#hidden-type').val(target);
+             $('#export-form').submit();
+             $('#hidden-type').val('');
+             break;
+     }
+     
+ });
 });
-
-
 </script>
 

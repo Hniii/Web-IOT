@@ -48,8 +48,17 @@
                    <!-- <button class="btn"><i class="fa fa-edit"></i> Edit</button>
                     <button class="btn"><i class="fa fa-trash"></i> Delete</button>
                    -->
-                   <a href="modifier_categorie.php?id=<?php echo $categorie['id'] ?>" class="btn"><i class="fa fa-edit"></i></a>
-                   <a href="supprimer_categorie.php?id=<?php echo $categorie['id'] ?>" onclick="return confirm('Voulez vous vraiment supprimer la categorie <?php echo $categorie['libelle'] ?>');""class="btn"><i class="fa fa-trash"></i></a>
+                   <a href="modifier_categorie.php?id=<?php echo $categorie['id'] ?>" 
+                      style="display:inline-block; color: #01c097; font-size:30px; padding:5px;margin-left:5px; margin-top:5px;">
+                      <i class="fa fa-edit"></i>
+                   </a>
+
+                   <a href="supprimer_categorie.php?id=<?php echo $categorie['id'] ?>" 
+                      onclick="return confirm('Voulez vous vraiment supprimer la categorie 
+                      <?php echo $categorie['libelle'] ?>');"
+                       style="display:inline-block; color:#f18181; font-size:30px;padding:5px;">
+                       <i class="fa fa-trash"></i>
+                   </a>
                     </td>
                 </tr>
             <?php

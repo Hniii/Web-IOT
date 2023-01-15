@@ -8,14 +8,67 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2? family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Ajouter catégorie</title>
 </head>
-
+<style>
+     
+     input[type="text"],
+     input[type="email"],
+     input[type="password"],
+     input[type="number"],
+     input[type="file"],
+     textarea,select{
+         margin-left: 50px;
+         margin: 10px;
+         width: 300px;
+         padding: 0.8rem;
+         border-radius: 0.25rem;
+         border: 1px solid #ced4da;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }   
+     input[type="submit"]{
+         margin-left: 90px;
+         margin-right: 60px;
+         padding: 0.6rem;
+         border-radius: 0.25rem;
+         border: 1px solid #ced4da;
+         background: #0795f3e5;
+         color: #fff;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+       }  
+    
+     label {
+         margin-left: 100 px;
+         font-weight: bold;
+     }
+     .myform{
+         display: block;
+     }
+     form{
+     display: grid;
+     gap: 40px;
+     grid-template-columns: 1fr;
+     margin: 0px auto;
+     max-width: 396px;
+     padding: 32px 16px;
+     
+     }
+     h3{
+         margin-left: 120px;
+        color: #a8a6a6;
+         
+     }
+     span{
+        margin-left: 420px;
+        padding: auto;
+        color: #f89e9e;
+     }
+    </style>
 <body>
     <?php
         require_once 'include/database.php';
         include "include/nav.php"
     ?>
     <div class="container login">
-        <h4>Ajouter composant </h4>
+        <h2 class="title">Ajouter composant </h4>
         <?php
             if(isset($_POST['ajouter'])){
             $nom = $_POST['nom'];
@@ -36,37 +89,40 @@
                 }else{//prblm while execution 
                     
                 ?>
-                     <div>Database erreur : Le composant <?php echo $nom ?> n'est pas  ajouté !</div>
+                     <span>Database erreur : Le composant <?php echo $nom ?> n'est pas  ajouté !</span>
                 <?php
 
                 }
             }else{
                 ?>
-                    <div>
-                    Nom, quantité et l'état du composant sont obligatoires.
-                    </div>
+                    <span>
+                       ** Nom, quantité et l'état du composant sont obligatoires. **
+                    </span>
                 <?php
             }
 
             }
 
         ?>
-        <form method="post">
-            <label  for="">Nom</label>
-            <input type="text" name="nom" />
-        
-            <label for="">Description</label>
-            <textarea class="" name="description" ></textarea>
+        <form class="myform" method="post">
+            <div class="popup">
             
-            <label for="">Etat</label>
-            <select name="etat">
+                    <label  for="">Nom</label><br>
+                    <input type="text" name="nom" /><br>
+            </div>
+            <div>&nbsp;</div>
+            <label for="">Description</label><br>
+            <textarea class="" name="description" ></textarea><br>
+            <div>&nbsp;</div>
+            <label for="">Etat</label><br>
+            <select name="etat"><br>
                 <option value="disponible"> Disponible </option>
                 <option value="en panne"> En panne </option>
                 <option value="perdu"> Perdu </option>     
             </select>
-
-            <label for="">Quantite</label>
-            <input type="number" name="quantite" min="0" />
+            <div>&nbsp;</div>
+            <label for="">Quantite</label><br>
+            <input type="number" name="quantite" min="0" /><br>
             <?php 
                 // our query is secure no need to use "prepare" , instead we can just use "query"
                 /* $sqlState = $pdo->query(query: 'SELECT * FROM categorie');
@@ -77,9 +133,10 @@
                 $composants = $pdo->query(query: 'SELECT * FROM composant')->fetchAll(mode: PDO::FETCH_ASSOC);
                 
             ?>
-            <label for="">Catégorie ou Type composant</label>
-            <select name="categorie">
-                <option value=""> Choisissez une catégorie: </option>
+            <div>&nbsp;</div>
+            <label for="">Catégorie ou Type composant</label><br>
+            <select name="categorie"><br>
+                <option value=""> Choisissez une catégorie: </option><br>
                 <?php
                     foreach ($categories as $categorie){
                     echo " <option value=".$categorie['id'].">".$categorie['libelle']."</option>";
@@ -87,9 +144,9 @@
                 ?>
             
             </select>
-            <label for="">Image</label>
-            <input type="file" id="img" name="img">
-            <select name="img">
+            <div>&nbsp;</div>
+            <label for="">Image</label><br>
+            <select name="img"><br>
                 <option value=""> Choisissez une image: </option>
                 <?php
                     foreach ($composants as $composant){
@@ -98,7 +155,8 @@
                 ?>
             
             </select>
-            <input type="submit"  value="Ajouter composant" name="ajouter"/>
+            <div>&nbsp;</div>
+            <input type="submit"  value="Ajouter composant" name="ajouter"/><br>
         </form>
     </div>
    

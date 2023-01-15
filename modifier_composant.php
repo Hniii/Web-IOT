@@ -8,7 +8,60 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2? family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Modifier composant</title>
 </head>
-
+<style>
+     
+     input[type="text"],
+     input[type="email"],
+     input[type="password"],
+     input[type="number"],
+     input[type="file"],
+     textarea,select{
+         margin-left: 50px;
+         margin: 10px;
+         width: 300px;
+         padding: 0.8rem;
+         border-radius: 0.25rem;
+         border: 1px solid #ced4da;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }   
+     input[type="submit"]{
+         margin-left: 90px;
+         margin-right: 60px;
+         padding: 0.6rem;
+         border-radius: 0.25rem;
+         border: 1px solid #ced4da;
+         background: #0795f3e5;
+         color: #fff;
+         transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+       }  
+    
+     label {
+         margin-left: 100 px;
+         font-weight: bold;
+     }
+     .myform{
+         display: block;
+     }
+     form{
+     display: grid;
+     gap: 40px;
+     grid-template-columns: 1fr;
+     margin: 0px auto;
+     max-width: 396px;
+     padding: 32px 16px;
+     
+     }
+     h3{
+         margin-left: 120px;
+        color: #a8a6a6;
+         
+     }
+     span{
+        margin-left: 420px;
+        padding: auto;
+        color: #f89e9e;
+     }
+    </style>
 <body>
     <?php
         require_once 'include/database.php';
@@ -21,7 +74,7 @@
 
     ?>
     <div class="container login">
-        <h4>Modifier composant </h4>
+        <h2 class="title">Modifier composant </h2>
         <?php
             if(isset($_POST['modifier'])){
             $nom = $_POST['nom'];
@@ -63,18 +116,20 @@
             }
 
         ?>
-        <form method="post">
+
+        
+        <form class="myform" method="post">
              <input type="hidden" name="id" value="<?php echo $composant->id ?>"/>
         
 
-
+             <div>&nbsp;</div>
             <label  for="">Nom</label>
             <input type="text" name="nom" value="<?php echo $composant->nom ?>" />
-        
+            <div>&nbsp;</div>
             <label for="">Description</label>
             <textarea class="" name="description" ><?php echo $composant->description ?></textarea>
-            
-            <label for="">Etat</label>
+            <div>&nbsp;</div>
+            <label for="">Etat</label><br>
             <select name="etat">
                 <option  value="<?php echo $composant->etat?>"><?php echo $composant->etat?> </option>
                
@@ -82,7 +137,7 @@
                 <option value="en panne"> En panne </option>
                 <option value="perdu"> Perdu </option>     
             </select>
-
+            <div>&nbsp;</div>
             <label for="">Quantite</label>
             <input type="number" name="quantite" min="0"value="<?php echo $composant->quantite?>"></input>
             <?php 
@@ -91,8 +146,11 @@
                 $sqlState->execute();
                 var_dump($sqlState->fetchAll());*/
                 $categories = $pdo->query(query: 'SELECT * FROM categorie')->fetchAll(mode: PDO::FETCH_ASSOC);
-                //print_r($categories);
+                $composants = $pdo->query(query: 'SELECT * FROM composant')->fetchAll(mode: PDO::FETCH_ASSOC);
+            
             ?>
+            <div>&nbsp;</div>
+           
             <label for="">Catégorie ou Type composant</label>
             <select name="categorie">
                 <option value=""> Choisissez une catégorie: </option>
@@ -105,8 +163,18 @@
                 ?>
             
             </select>
-            <label for="">Image</label>
-            <input type="file" id="img" name="img">
+            <div>&nbsp;</div>
+            <label for="">Image</label><br>
+            <select name="img"><br>
+                <option value=""> Choisissez une image: </option>
+                <?php
+                    foreach ($composants as $composant){
+                    echo " <option value=".$composant['id'].">".$composant['img']."</option>";
+                    }
+                ?>
+            
+            </select>
+            <div>&nbsp;</div>
             
             <input type="submit"  value="Modifier composant" name="modifier"/>
         </form>

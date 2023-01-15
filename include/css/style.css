@@ -2,8 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
-
 
 }
 body{
@@ -16,6 +14,7 @@ body{
   
 
 }
+/*Start--------------------Navbar-----------------------*/
 nav{
     flex: 1;
     text-align: right;
@@ -29,6 +28,7 @@ nav ul li{
     display: inline-block;
     margin-right: 20px;
 }
+/*End--------------------Navbar-----------------------*/
 a{
     text-decoration: none;
     color: #555;
@@ -63,6 +63,11 @@ p{
     line-height: 60px;
     margin: 25px 0;
 }
+.myform{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
 .btn{
     display: inline-block;
     background: #0795f3e5;
@@ -77,22 +82,7 @@ p{
 .btn:hover{
     background: #353455;
 }
-.button {
-    transition-duration: 0.4s;
-  }
-  
-  .button:hover {
-    background-color: #df8116; /* Green */
-    color: white;
-  }
-.header{
-    background: rgba(254, 255, 255, 0.897);
-    
-}
-.header .row{
-    margin-top: 70px;
 
-}
 .categories{
     margin: 70px 0;
 }
@@ -104,12 +94,7 @@ p{
 .col-3 img{
     width: 100%;
 }
-.small-container{
-    max-width: 1080px;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
-}
+
 .col-4{
     flex-basis: 25%;
     padding: 10px;
@@ -207,7 +192,8 @@ h4{
 .imgstyle:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
   }
- 
+
+
 /*-------------- media query for menu ---------------*/
 @media only screen and (maw-width: 800px){
     nav ul{

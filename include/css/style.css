@@ -172,8 +172,42 @@ h4{
   }
 .table tr:hover {background-color: #ddd;}
 
-
-
+.form-group{margin-bottom:15px}
+.col-lg-2{
+    width:16.66666667%;
+    float:left;
+    position:relative;min-height:1px;padding-right:15px;padding-left:15px
+}
+.col-lg-4{
+    width:30%;
+    float:left;
+    position:relative;min-height:1px;padding-right:15px;padding-left:15px
+ 
+}
+.control-label{
+    color:#3c763d;
+    margin-bottom:0;
+    vertical-align:middle;
+    padding-top:7px;
+    margin-bottom:0;
+    text-align:right;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+  }
+.imgstyle {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 50px; /* Set a small width */
+  }
+  
+  /* Add a hover effect (blue shadow) */
+.imgstyle:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
+ 
 /*-------------- media query for menu ---------------*/
 @media only screen and (maw-width: 800px){
     nav ul{

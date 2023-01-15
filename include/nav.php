@@ -11,7 +11,7 @@
             <nav>
                 <ul>
                     <li><a href="" >Acceuil</a></li>
-                    <li><a href="">Composants <!--<img src="images/icons/components.png" width="15px" hight="30px">--></a></li>
+                    <li><a href="voir_composant.php">Composants <!--<img src="images/icons/components.png" width="15px" hight="30px">--></a></li>
                     <li><a href="index.php">Ajouter Utilisateur</a></li>                        
                     <?php 
                         if($connecte){
@@ -27,7 +27,7 @@
                         }else{
                             ?>
                             <li><a href="connexion.php">Connexion</a></li>
-
+                            
                             <?php
 
                         }

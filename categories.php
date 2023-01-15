@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="include/css/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
         family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -34,6 +34,7 @@
             foreach($categories as $categorie){
             ?>
                 <tr>
+                
                     <td><?php echo $categorie['id']?></td>
                     <td><?php echo $categorie['libelle']?></td>
                     <td><?php echo $categorie['description']?></td>
@@ -44,9 +45,11 @@
                     echo $categorie['date_creation']->format('%d days, %H hours, %I minutes, %S seconds');  ?></td>*/
                     ?></td>
                     <td>
-                    <button class="btn"><i class="fa fa-edit"></i> Edit</button>
+                   <!-- <button class="btn"><i class="fa fa-edit"></i> Edit</button>
                     <button class="btn"><i class="fa fa-trash"></i> Delete</button>
-               
+                   -->
+                   <a href="modifier_categorie.php?id=<?php echo $categorie['id'] ?>" class="btn"><i class="fa fa-edit"></i></a>
+                   <a href="supprimer_categorie.php?id=<?php echo $categorie['id'] ?>" onclick="return confirm('Voulez vous vraiment supprimer la categorie <?php echo $categorie['libelle'] ?>');""class="btn"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
             <?php
